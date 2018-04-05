@@ -1,2 +1,5 @@
 At any point of the game, the maximum number of possible chess moves is not more than 150, as there are only 16 pieces each and only 64 squares. As the number of pieces on the board decreases we get move space for the remaining peices to move, similarly as the number of pieces on the board is more, the available squares for the pieces is less. Thus limiting the possible number of moves to 150 at any given valid chess position.
-Once the move is made that can be stored in
+There are 3 types of moves in chess, they are already played moves, current move and exponential moves
+The played moves are stored in a list. As there will be no changes in played moves, it can be stored in a simple data structure (list)
+The current move is the one which contains all the possible moves that can be played now. As the total number of is not more than 150 at any given position, this can also be implemented using a list of length as described by the current move generating algo.
+For every new move the total number of possible moves increase exponentially, hence Red-Black tree is required for storing the future moves. Also we make use of minimax algorithm and alpha-beta pruning to cut down all the possible future moves.
