@@ -1,0 +1,2 @@
+At any point of the game, the maximum number of possible chess moves is not more than 150, as there are only 16 pieces each and only 64 squares. As the number of pieces on the board decreases we get move space for the remaining peices to move, similarly as the number of pieces on the board is more, the available squares for the pieces is less. Thus limiting the possible number of moves to 150 at any given valid chess position.
+Once the move is made that can be stored in
