@@ -1,0 +1,14 @@
+As the Alphacom's revenue growth is 18%. It tells us that it's expanding at a very good rate. This implies the need for increase in the hardware and software resources to maintain the pace at which the company is growing. Hence their decision of cloudifying the infrastucture seems perfect. 
+
+There are lot of advantages by cloudfying the infrastructure. Cloud is economical compared to large upfront capital cost. It also includes technical support, system maintenance. Most of the cloud vendors guaranties uptime with 99% confidence. Cloud can be accessed from anywhere.The content will be updated in realtime. And the most important aspect of cloud is it can be scaled whenever the requirement increases. As Alphacom is growing at 18% annually this is the perfect timing to move to cloud. And also it can be scaled whenever required.   
+
+But the main concern with this decision is security, as one of their primary customer is banking sector.
+
+Hence I suggest Aplhacom to go with Amazon's AWS for banking and payments. As their main solutions are 
+      Invest in Your Business, Not IT - 
+      Build on the Most Secure Platform
+      Run Powerful Analytics, Fast
+      
+Also their use case involves Grid Computing, Data Analytics & Management, Disaster Recovery & Business Continuity and Digital Transformation this is the perfect cloud solution to Alphacom's banking sector.
+
+I would recommend Amazon's AWS for thier Healthcare and Transport clients as it is one of the most reliable cloud service provided at the best price. Also it is the best example for cloud infrastructure as it follows are the guidelines mentioned for a cloud.
