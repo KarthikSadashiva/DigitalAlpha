@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy
 import seaborn as sns 
 df = pd.read_excel('C:\\Users\\user\\.spyder-py3\\beer.xlsx', sheetname='Sheet1')
- 
+print(df.describe())
 print("Column headings:")
 #print(df.columns)
 
@@ -14,6 +14,10 @@ p30 = df['PRICE 30PK']
 c12 = df['CASES 12PK']
 c18 = df['CASES 18PK']
 c30 = df['CASES 30PK']
+
+p12_mean = numpy.mean(p12)
+p18_mean = numpy.mean(p18)
+p30_mean = numpy.mean(p30)
 
 #Analysis of the data
 plt.figure(1)
@@ -63,9 +67,7 @@ plt.plot(c18_norm,marker='o')
 plt.figure(5)
 p30_norm = p30/numpy.max(p30)
 c30_norm = c30/numpy.max(c30)
-print("Normalized")
-print(p30_norm)
-print(c30_norm)
+
 plt.plot(p30_norm,marker='o')
 plt.plot(c30_norm,marker='o')
 plt.show()
