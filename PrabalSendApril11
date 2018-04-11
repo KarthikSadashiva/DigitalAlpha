@@ -1,0 +1,56 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import preprocessing
+plt.rc("font", size=14)
+from sklearn.linear_model import LogisticRegression
+from sklearn.cross_validation import train_test_split
+import seaborn as sns
+sns.set(style="white")
+sns.set(style="whitegrid", color_codes=True)
+data = pd.read_csv('C:\\Users\\user\\Desktop\\Adult\\adult_data.csv',header=0)
+data.replace(' ?',np.NaN,inplace=True)
+print(data)
+data = data.dropna()
+print(data)
+print(data.columns)
+sns.countplot(x='Salary', data=data, palette = 'hls')
+plt.show()
+plt.savefig('count_plot')
+pd.crosstab(data['Salary'],data['Age']).plot(kind='bar')
+print(data[data['Salary']=='<=50K'])
+plt.title('Age Vs Salary')
+plt.xlabel('Salary')
+plt.ylabel('Age')
+plt.savefig('purchase_fre_job')
+#trying
+plt.title('Histogram of Age')
+plt.xlabel('Age')
+plt.ylabel('Frequency')
+plt.savefig('hist_age')
+data["Age"].hist()
+"""table=pd.crosstab(data['Salary'],data['Age'])  
+table.div(table.sum(1).astype(float), axis=0).plot(kind='bar', stacked=True)
+plt.title('Stacked Bar Chart of  WorkClass vs Salary')
+plt.xlabel('Education')
+plt.ylabel('Proportion of Salary')
+plt.savefig('edu_vs_pur_stack')"""
+#keep trying
+table=pd.crosstab(data['Workclass'],data['Salary'])
+table.div(table.sum(1).astype(float), axis=0).plot(kind='bar', stacked=True)
+plt.title('Stacked Bar Chart of  WorkClass vs Salary')
+plt.xlabel('WorkClass')
+plt.ylabel('Proportion of Salary')
+#plt.savefig('edu_vs_pur_stack')
+#data.loc[data['Salary']==' <=50K', 'Salary']=0
+"""list1=sorted(data['Age'].unique())
+for i in list1:
+    print(i)
+    print(data[data['Age']==int(i)]['Salary'].value_counts())"""
+
+table=pd.crosstab(data['Fnlwgt'],data['Salary'])
+table.div(table.sum(1).astype(float), axis=0).plot(kind='bar', stacked=True)
+plt.title('Stacked Bar Chart of  WorkClass vs Salary')
+plt.xlabel('Education')
+plt.ylabel('Proportion of Salary')
+#plt.savefig('edu_vs_pur_stack')
