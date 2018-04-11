@@ -1,0 +1,174 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import preprocessing
+plt.rc("font", size=14)
+from sklearn.linear_model import LogisticRegression
+from sklearn.cross_validation import train_test_split
+import seaborn as sns
+sns.set(style="white")
+sns.set(style="whitegrid", color_codes=True)
+data = pd.read_csv('C:\\Users\\user\\Desktop\\Adult\\adult_data.csv',header=0)
+data.replace(' ?',np.NaN,inplace=True)
+print(data)
+data = data.dropna()
+print(data)
+print(data.columns)
+sns.countplot(x='Salary', data=data, palette = 'hls')
+plt.show()
+plt.savefig('count_plot')
+pd.crosstab(data['Salary'],data['Age']).plot(kind='bar')
+print(data[data['Salary']=='<=50K'])
+plt.title('Age Vs Salary')
+plt.xlabel('Salary')
+plt.ylabel('Age')
+plt.savefig('purchase_fre_job')
+#trying
+plt.title('Histogram of Age')
+plt.xlabel('Age')
+plt.ylabel('Frequency')
+plt.savefig('hist_age')
+data["Age"].hist()
+"""table=pd.crosstab(data['Salary'],data['Age'])  
+table.div(table.sum(1).astype(float), axis=0).plot(kind='bar', stacked=True)
+plt.title('Stacked Bar Chart of  WorkClass vs Salary')
+plt.xlabel('Education')
+plt.ylabel('Proportion of Salary')
+plt.savefig('edu_vs_pur_stack')"""
+#keep trying
+table=pd.crosstab(data['Workclass'],data['Salary'])
+table.div(table.sum(1).astype(float), axis=0).plot(kind='bar', stacked=True)
+plt.title('Stacked Bar Chart of  WorkClass vs Salary')
+plt.xlabel('WorkClass')
+plt.ylabel('Proportion of Salary')
+#plt.savefig('edu_vs_pur_stack')
+#data.loc[data['Salary']==' <=50K', 'Salary']=0
+"""list1=sorted(data['Age'].unique())
+for i in list1:
+    print(i)
+    print(data[data['Age']==int(i)]['Salary'].value_counts())"""
+
+"""plt.title('Histogram of Fnlwgt')
+plt.xlabel('Fnlwgt')
+plt.ylabel('Frequency')
+plt.savefig('hist_age')
+data["Fnlwgt"].hist()
+"""
+table=pd.crosstab(data['Salary'].head(20),data['Fnlwgt'].head(20))
+table.div(table.sum(1).astype(float), axis=0).plot(kind='bar', stacked=True)
+plt.title('Stacked Bar Chart of  Fnlwgt vs Salary')
+plt.xlabel('Fnlwgt')
+plt.ylabel('Proportion of Salary')
+
+#plt.savefig('edu_vs_pur_stack')"""
+table=pd.crosstab(data['Education'],data['Salary'])
+table.div(table.sum(1).astype(float), axis=0).plot(kind='bar', stacked=True)
+plt.title('Stacked Bar Chart of  Education vs Salary')
+plt.xlabel('Education')
+plt.ylabel('Proportion of Salary')
+#next Education_num
+table=pd.crosstab(data['Education_num'],data['Salary'])
+table.div(table.sum(1).astype(float), axis=0).plot(kind='bar', stacked=True)
+plt.title('Stacked Bar Chart of  Education_num vs Salary')
+plt.xlabel('Education')
+plt.ylabel('Proportion of Salary')
+
+table=pd.crosstab(data['Maritalstatus'],data['Salary'])
+table.div(table.sum(1).astype(float), axis=0).plot(kind='bar', stacked=True)
+plt.title('Stacked Bar Chart of  Maritalstatus vs Salary')
+plt.xlabel('Maritalstatus')
+plt.ylabel('Proportion of Salary')
+
+table=pd.crosstab(data['Occupation'],data['Salary'])
+table.div(table.sum(1).astype(float), axis=0).plot(kind='bar', stacked=True)
+plt.title('Stacked Bar Chart of  Occupation vs Salary')
+plt.xlabel('Occupation')
+plt.ylabel('Proportion of Salary')
+
+table=pd.crosstab(data['Relationship'],data['Salary'])
+table.div(table.sum(1).astype(float), axis=0).plot(kind='bar', stacked=True)
+plt.title('Stacked Bar Chart of  Relationship vs Salary')
+plt.xlabel('Relationship')
+plt.ylabel('Proportion of Salary')
+
+table=pd.crosstab(data['Race'],data['Salary'])
+table.div(table.sum(1).astype(float), axis=0).plot(kind='bar', stacked=True)
+plt.title('Stacked Bar Chart of  Race vs Salary')
+plt.xlabel('Race')
+plt.ylabel('Proportion of Salary')
+
+
+table=pd.crosstab(data['Gender'],data['Salary'])
+table.div(table.sum(1).astype(float), axis=0).plot(kind='bar', stacked=True)
+plt.title('Stacked Bar Chart of  Gender vs Salary')
+plt.xlabel('Gender')
+plt.ylabel('Proportion of Salary')
+
+
+table=pd.crosstab(data['Capitalgain'],data['Salary'])
+table.div(table.sum(1).astype(float), axis=0).plot(kind='bar', stacked=True)
+plt.title('Stacked Bar Chart of  Capitalgain vs Salary')
+plt.xlabel('Capitalgain')
+plt.ylabel('Proportion of Salary')
+
+table=pd.crosstab(data['Capitaloss'],data['Salary'])
+table.div(table.sum(1).astype(float), axis=0).plot(kind='bar', stacked=True)
+plt.title('Stacked Bar Chart of  Capitaloss vs Salary')
+plt.xlabel('Capitaloss')
+plt.ylabel('Proportion of Salary')
+
+
+table=pd.crosstab(data['Hoursperweek'],data['Salary'])
+table.div(table.sum(1).astype(float), axis=0).plot(kind='bar', stacked=True)
+plt.title('Stacked Bar Chart of  Hoursperweek vs Salary')
+plt.xlabel('Hoursperweek')
+plt.ylabel('Proportion of Salary')
+
+table=pd.crosstab(data['Native'],data['Salary'])
+table.div(table.sum(1).astype(float), axis=0).plot(kind='bar', stacked=True)
+plt.title('Stacked Bar Chart of  Native vs Salary')
+plt.xlabel('Native')
+plt.ylabel('Proportion of Salary')
+
+
+#Important property according to data visualization
+#Age
+#WorkClass
+#Education_num
+#Occupation
+#HoursPerweek
+
+new_data_frame=data[['Age','Workclass','Education_num','Occupation','Hoursperweek']]
+print(new_data_frame)
+#using the new dataframe
+cat_vars=['Age','Workclass','Education_num','Occupation','Hoursperweek']
+for var in cat_vars:
+    cat_list='var'+'_'+var
+    cat_list = pd.get_dummies(new_data_frame[var], prefix=var)
+    data1=new_data_frame.join(cat_list)
+    new_data_frame=data1
+cat_vars=['Workclass','Education_num','Occupation']
+data_vars=new_data_frame.columns.values.tolist()
+to_keep=[i for i in data_vars if i not in cat_vars]
+
+data_final=new_data_frame[to_keep]
+data_final.columns.values
+
+data_final_vars=data_final.columns.values.tolist()
+y=data['Salary']
+X=[i for i in data_final_vars if i not in y]
+
+from sklearn import datasets
+from sklearn.feature_selection import RFE
+from sklearn.linear_model import LogisticRegression
+logreg = LogisticRegression()
+rfe = RFE(logreg,5)
+rfe = rfe.fit(data_final[to_keep], data_final[y] )
+print(rfe.support_)
+print(rfe.ranking_)
+
+
+
+
+
+
